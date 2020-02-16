@@ -13,3 +13,13 @@
  *= require_tree .
  *= require_self
  */
+
+
+form label {
+  font-weight: bold;
+  color: red;
+}
+
+#movies .hilite {
+  background-color: yellow;
+}
