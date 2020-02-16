@@ -21,7 +21,6 @@
         %th= link_to 'Movie Title', movies_path(:sort => :title)
 
       %th Rating
-
       - if session[:sort] == 'release_date'
         %th.hilite= link_to 'Release_Date', movies_path(:sort => :release_date)
       - else

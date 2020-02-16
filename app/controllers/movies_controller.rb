@@ -12,14 +12,6 @@ class MoviesController < ApplicationController
 
 
   def index
-      if params[:sort]
-          session[:sort] = params[:sort]
-          @movies = Movie.all.order(params[:sort])
-      elsif session[:sort]
-          @movies = Movie.all.order(session[:sort])
-      else
-          @movies = Movie.all
-      end
       @all_ratings = Movie.all_ratings
       if params[:ratings]
           session[:ratings] = params[:ratings]
@@ -29,7 +21,17 @@ class MoviesController < ApplicationController
       else
           @selected_ratings = @all_ratings
       end
+      
       @movies = @movies.where(:rating => @selected_ratings)
+      if params[:sort]
+          session[:sort] = params[:sort]
+          @movies = Movie.all.order(params[:sort])
+      elsif session[:sort]
+          @movies = Movie.all.order(session[:sort])
+      else
+          @movies = Movie.all
+      end
+
   end
 
 
