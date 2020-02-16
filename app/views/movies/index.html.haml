@@ -13,12 +13,8 @@
 
 
 %table#movies
-  
   %thead
     %tr
-
-
-      - if params[:sort] == 'title'
       - if session[:sort] == 'title'
         %th.hilite= link_to 'Movie Title', movies_path(:sort => :title)
       - else
@@ -26,15 +22,12 @@
 
       %th Rating
 
-      - if params[:sort] == 'release_date'
       - if session[:sort] == 'release_date'
         %th.hilite= link_to 'Release_Date', movies_path(:sort => :release_date)
       - else
         %th= link_to 'Release_Date', movies_path(:sort => :release_date)
 
-
       %th More Info
-      
   %tbody
     - @movies.each do |movie|
       %tr
@@ -42,8 +35,6 @@
         %td= movie.rating
         %td= movie.release_date
         %td= link_to "More about #{movie.title}", movie_path(movie)
-
-
 
 = link_to 'Add new movie', new_movie_path
 
